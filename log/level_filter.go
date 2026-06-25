@@ -9,7 +9,7 @@ import (
 // LevelFilter wraps a [Logger] and discards messages whose level is below the
 // configured [LevelFilter.Level]. This allows callers to control verbosity at
 // the call site while keeping the underlying logger unchanged — a natural fit
-// for the composable (Lego-like) design philosophy of go-wind.
+// for the composable (Lego-like) design philosophy of lulu.
 //
 // Usage:
 //

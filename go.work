@@ -1,7 +1,14 @@
 go 1.26.1
 
 use (
+	./_examples
+	./cache
+	./cache/local
+	./cache/redis
 	./log
+	./transport/grpc/client
+	./transport/grpc/middleware/recovery
+	./transport/grpc/server
 	./transport/http
 	./transport/http/driver/gin
 	./transport/http/middleware/cors
