@@ -6,6 +6,10 @@ use (
 	./cache/local
 	./cache/redis
 	./log
+	./retry
+	./tracer/otlp
+	./transaction
+	./transaction/dtm
 	./transport/grpc/client
 	./transport/grpc/middleware/recovery
 	./transport/grpc/server
@@ -13,4 +17,9 @@ use (
 	./transport/http/driver/gin
 	./transport/http/middleware/cors
 	./transport/http/middleware/recovery
+	./workflow
+	./workflow/argo
+	./workflow/conductor
+	./workflow/goworkflows
+	./workflow/temporal
 )

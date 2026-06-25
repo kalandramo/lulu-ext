@@ -40,7 +40,7 @@ func (s SlogLogger) Error(ctx context.Context, msg string, args ...any) {
 	s.L.ErrorContext(ensureCtx(ctx), msg, args...)
 }
 
-// Enabled maps the wind [Level] to the equivalent slog level and reports
+// Enabled maps the lulu [Level] to the equivalent slog level and reports
 // whether the underlying [*slog.Logger] would emit a record at that level.
 func (s SlogLogger) Enabled(level lululog.Level) bool {
 	return s.L.Enabled(nil, levelToSlog(level))
@@ -63,7 +63,7 @@ func ensureCtx(ctx context.Context) context.Context {
 	return ctx
 }
 
-// levelToSlog maps a wind [Level] to the equivalent [slog.Level].
+// levelToSlog maps a lulu [Level] to the equivalent [slog.Level].
 func levelToSlog(level lululog.Level) slog.Level {
 	switch level {
 	case lululog.LevelDebug:

@@ -23,7 +23,7 @@ type Driver interface {
 	Stop(ctx context.Context) error
 }
 
-// 确保 Server 实现了 wind transport.Server 接口。
+// 确保 Server 实现了 lulu transport.Server 接口。
 var _ transport.Server = (*Server)(nil)
 
 type Server struct {

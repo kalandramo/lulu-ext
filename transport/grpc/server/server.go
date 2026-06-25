@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-// 确保 Server 实现了 wind transport.Server 接口。
+// 确保 Server 实现了 lulu transport.Server 接口。
 var _ transport.Server = (*Server)(nil)
 
 // Middleware 定义 gRPC 一元拦截器类型，用于在请求前后执行自定义逻辑。
