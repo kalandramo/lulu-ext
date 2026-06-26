@@ -1,0 +1,4 @@
+github.com/BurntSushi/toml v1.6.0 h1:dRaEfpa2VI55EwlIW72hMRHdWouJeRF7TPYhI+AUQjk=
+github.com/BurntSushi/toml v1.6.0/go.mod h1:ukJfTF/6rtPPRCnwkur4qwRxa8vTRFBF0uk2lLoLwho=
+github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626042247-1127e2133169 h1:YB5iSDJLbJLbKAc3XXEXA2Ab/FlDD44iv5iIG4auDro=
+github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626042247-1127e2133169/go.mod h1:/LjSMvY6QZKSDiuqDAUWC/uPnSLB/j0Nb+Hx16yTyq8=
