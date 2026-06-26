@@ -1,4 +1,6 @@
 github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62 h1:j+tjFrH54U6+LO7Ve7nP3MCHR/bR9VnE/52zlD8C60I=
 github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62/go.mod h1:CU5gA+bQr52RYV7fdkEtt2rnoeU3qxGCeBseyQmo73Q=
+github.com/kalandramo/lulu-ext/metrics v0.0.0-20260626091828-96ffead8df6c h1:5bf8nwJJOhVHKcYogkAPs0dqmuobX6zHw1uRkY5Ibes=
+github.com/kalandramo/lulu-ext/metrics v0.0.0-20260626091828-96ffead8df6c/go.mod h1:qEZBvn+/MkOMSmmULn4f1+20tF8aW+dwi7JL3M8caM4=
 github.com/kalandramo/lulu-ext/transport/http v0.0.0-20260626091828-96ffead8df6c h1:H19iQsKnr1QJPVgcH/XXOejbs6gBd2pr6JbsvbKPoXU=
 github.com/kalandramo/lulu-ext/transport/http v0.0.0-20260626091828-96ffead8df6c/go.mod h1:cFixneQ+bhtGg/eqlwDM9Ud7oxZvjqoi1Be3V193rDI=
