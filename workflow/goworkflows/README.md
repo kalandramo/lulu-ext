@@ -1,6 +1,6 @@
 # Go Workflows
 
-[go-workflows](https://github.com/cschleiden/go-workflows) workflow engine module for [go-wind-plugins](https://github.com/tx7do/go-wind-plugins).
+[go-workflows](https://github.com/cschleiden/go-workflows) workflow engine module for [lulu-ext](https://github.com/kalandramo/lulu-ext).
 
 ## Overview
 
@@ -11,7 +11,7 @@ This module wraps the go-workflows SDK, providing a high-level client and worker
 ## Installation
 
 ```bash
-go get github.com/tx7do/go-wind-plugins/workflow/goworkflows
+go get github.com/kalandramo/lulu-ext/workflow/goworkflows
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ go get github.com/tx7do/go-wind-plugins/workflow/goworkflows
 import (
     "github.com/cschleiden/go-workflows/backend"
     "github.com/cschleiden/go-workflows/backend/sqlite"
-    gowf "github.com/tx7do/go-wind-plugins/workflow/goworkflows"
+    gowf "github.com/kalandramo/lulu-ext/workflow/goworkflows"
 )
 
 // Choose a backend (SQLite shown here; Redis, MySQL also available)

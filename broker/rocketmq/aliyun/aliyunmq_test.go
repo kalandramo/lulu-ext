@@ -1,0 +1,157 @@
+package aliyun
+
+import (
+	"context"
+	"fmt"
+	"math/rand"
+	"os"
+	"os/signal"
+	"syscall"
+	"testing"
+	"time"
+
+	"github.com/stretchr/testify/assert"
+
+	"github.com/kalandramo/lulu/log"
+
+	"github.com/kalandramo/lulu-ext/broker"
+	rocketmqOption "github.com/kalandramo/lulu-ext/broker/rocketmq/option"
+	api "github.com/kalandramo/lulu-ext/testing/api/manual"
+	"github.com/kalandramo/lulu-ext/tracer/otlp"
+)
+
+const (
+	testBroker    = "127.0.0.1:9876"
+	testTopic     = "test_topic"
+	testGroupName = "CID_ONSAPI_OWNER"
+)
+
+func handleHygrothermograph(_ context.Context, topic string, headers broker.Headers, msg *api.Hygrothermograph) error {
+	log.GetLogger().Info(context.Background(), fmt.Sprintf("Topic %s, Headers: %+v, Payload: %+v", topic, headers, msg))
+	return nil
+}
+
+// RegisterHygrothermographHandler 将一个不返回响应的业务函数适配为 broker.Handler。
+func RegisterHygrothermographHandler(f func(ctx context.Context, topic string, headers broker.Headers, msg *api.Hygrothermograph) error) broker.Handler {
+	return func(ctx context.Context, event broker.Event) error {
+		switch t := event.Message().Body.(type) {
+		case *api.Hygrothermograph:
+			return f(ctx, event.Topic(), event.Message().Headers, t)
+		default:
+			return fmt.Errorf("unsupported type: %T", t)
+		}
+	}
+}
+
+func createTracerProvider(exporterName, serviceName string) broker.Option {
+	switch exporterName {
+	case "otlp-grpc":
+		tp, err := otlp.New(
+			otlp.WithEndpoint("localhost:4317"),
+			otlp.WithServiceName(serviceName),
+			otlp.WithInsecure(true),
+		)
+		if err != nil {
+			return nil
+		}
+		return broker.WithTracerProvider(tp)
+	case "zipkin":
+		tp, err := otlp.New(
+			otlp.WithEndpoint("http://localhost:9411/api/v2/spans"),
+			otlp.WithServiceName(serviceName),
+			otlp.WithHTTP(true),
+			otlp.WithHeaders(map[string]string{"test": ""}),
+		)
+		if err != nil {
+			return nil
+		}
+		return broker.WithTracerProvider(tp)
+	}
+
+	return nil
+}
+
+func Test_Aliyun_Publish(t *testing.T) {
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+
+	ctx := context.Background()
+
+	endpoint := ""
+	accessKey := ""
+	secretKey := ""
+	instanceId := ""
+	topicName := ""
+
+	b := NewBroker(
+		broker.WithCodec("json"),
+		rocketmqOption.WithEnableTrace(),
+		rocketmqOption.WithNameServerDomain(endpoint),
+		rocketmqOption.WithAccessKey(accessKey),
+		rocketmqOption.WithSecretKey(secretKey),
+		rocketmqOption.WithInstanceName(instanceId),
+	)
+
+	_ = b.Init()
+
+	if err := b.Connect(); err != nil {
+		t.Logf("cant connect to broker, skip: %v", err)
+		t.Skip()
+	}
+	defer b.Disconnect()
+
+	var msg api.Hygrothermograph
+	const count = 10
+	for i := 0; i < count; i++ {
+		startTime := time.Now()
+		msg.Humidity = float64(rand.Intn(100))
+		msg.Temperature = float64(rand.Intn(100))
+		err := b.Publish(ctx, topicName, broker.NewMessage(msg))
+		assert.Nil(t, err)
+		elapsedTime := time.Since(startTime) / time.Millisecond
+		fmt.Printf("Publish %d, elapsed time: %dms, Humidity: %.2f Temperature: %.2f\n",
+			i, elapsedTime, msg.Humidity, msg.Temperature)
+	}
+
+	fmt.Printf("total send %d messages\n", count)
+
+	<-interrupt
+}
+
+func Test_Aliyun_Subscribe(t *testing.T) {
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+
+	endpoint := ""
+	accessKey := ""
+	secretKey := ""
+	instanceId := ""
+	topicName := ""
+	groupName := "GID_DEFAULT"
+
+	b := NewBroker(
+		broker.WithCodec("json"),
+		rocketmqOption.WithEnableTrace(),
+		rocketmqOption.WithNameServerDomain(endpoint),
+		rocketmqOption.WithAccessKey(accessKey),
+		rocketmqOption.WithSecretKey(secretKey),
+		rocketmqOption.WithInstanceName(instanceId),
+	)
+
+	_ = b.Init()
+
+	if err := b.Connect(); err != nil {
+		t.Logf("cant connect to broker, skip: %v", err)
+		t.Skip()
+	}
+	defer b.Disconnect()
+
+	_, err := b.Subscribe(topicName,
+		RegisterHygrothermographHandler(handleHygrothermograph),
+		api.HygrothermographCreator,
+		broker.WithSubscribeQueueName(groupName),
+	)
+	assert.Nil(t, err)
+
+	<-interrupt
+}

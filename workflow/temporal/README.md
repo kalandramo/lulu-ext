@@ -30,7 +30,7 @@ temporal server start-dev
 
 ```go
 import (
-    temporal "github.com/tx7do/go-wind-plugins/workflow/temporal"
+    temporal "github.com/kalandramo/lulu-ext/workflow/temporal"
 )
 
 wc, err := temporal.NewClient(

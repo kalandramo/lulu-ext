@@ -1,6 +1,6 @@
 # Argo Workflows
 
-Argo Workflows module for [go-wind-plugins](https://github.com/tx7do/go-wind-plugins), based on [argoproj/argo-workflows](https://github.com/argoproj/argo-workflows).
+Argo Workflows module for [lulu-ext](https://github.com/kalandramo/lulu-ext), based on [argoproj/argo-workflows](https://github.com/argoproj/argo-workflows).
 
 ## Overview
 
@@ -11,7 +11,7 @@ This module provides a lightweight Go wrapper around the **Argo Server REST API*
 ## Installation
 
 ```bash
-go get github.com/tx7do/go-wind-plugins/workflow/argo
+go get github.com/kalandramo/lulu-ext/workflow/argo
 ```
 
 ## Quick Start
@@ -19,7 +19,7 @@ go get github.com/tx7do/go-wind-plugins/workflow/argo
 ### 1. Create a Client
 
 ```go
-import argowf "github.com/tx7do/go-wind-plugins/workflow/argo"
+import argowf "github.com/kalandramo/lulu-ext/workflow/argo"
 
 client, err := argowf.NewClient(argowf.ClientOptions{
     ServerURL:         "https://localhost:2746",

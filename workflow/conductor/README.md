@@ -1,6 +1,6 @@
 # Conductor Workflow
 
-Conductor workflow module for [go-wind-plugins](https://github.com/tx7do/go-wind-plugins), based on [conductor-oss/conductor](https://github.com/conductor-oss/conductor) (Netflix Conductor).
+Conductor workflow module for [lulu-ext](https://github.com/kalandramo/lulu-ext), based on [conductor-oss/conductor](https://github.com/conductor-oss/conductor) (Netflix Conductor).
 
 ## Overview
 
@@ -11,7 +11,7 @@ This module provides a Go wrapper around the [Conductor Go SDK](https://github.c
 ## Installation
 
 ```bash
-go get github.com/tx7do/go-wind-plugins/workflow/conductor
+go get github.com/kalandramo/lulu-ext/workflow/conductor
 ```
 
 ## Quick Start
@@ -19,7 +19,7 @@ go get github.com/tx7do/go-wind-plugins/workflow/conductor
 ### 1. Create a Client
 
 ```go
-import conductor "github.com/tx7do/go-wind-plugins/workflow/conductor"
+import conductor "github.com/kalandramo/lulu-ext/workflow/conductor"
 
 // Connect to a local Conductor server
 client, err := conductor.NewClient(conductor.ClientOptions{
