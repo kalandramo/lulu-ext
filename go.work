@@ -54,6 +54,7 @@ use (
 	./tracer/otlp
 	./transaction
 	./transaction/dtm
+	./transport
 	./transport/grpc/client
 	./transport/grpc/middleware/recovery
 	./transport/grpc/server
