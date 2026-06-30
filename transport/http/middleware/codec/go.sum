@@ -1,0 +1,10 @@
+github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62 h1:j+tjFrH54U6+LO7Ve7nP3MCHR/bR9VnE/52zlD8C60I=
+github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62/go.mod h1:CU5gA+bQr52RYV7fdkEtt2rnoeU3qxGCeBseyQmo73Q=
+github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626101359-877a46103c1d h1:/opt20O39VuUmxQm8BYt3SrLRRKcwtVWYayOghRzlpg=
+github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626101359-877a46103c1d/go.mod h1:/LjSMvY6QZKSDiuqDAUWC/uPnSLB/j0Nb+Hx16yTyq8=
+github.com/kalandramo/lulu-ext/encoding/json v0.0.0-20260626101359-877a46103c1d h1:QTz3GW5E8zjb+dBLKMbUZ2sjoYr1msom+9ZCc7HXj+A=
+github.com/kalandramo/lulu-ext/encoding/json v0.0.0-20260626101359-877a46103c1d/go.mod h1:typ6l05GDZdAyToffxzA9qmsM4rk9gKZQTUlVr6E3fc=
+github.com/kalandramo/lulu-ext/encoding/xml v0.0.0-20260626101359-877a46103c1d h1:ZCtacatt5L6zF9C+wHTrFOc4xaeiSsm8bTRWZyJ1BHY=
+github.com/kalandramo/lulu-ext/encoding/xml v0.0.0-20260626101359-877a46103c1d/go.mod h1:SKEK8u9clU/RfrguU3LG6/eLw3SOl92blfywTKwf+IQ=
+github.com/kalandramo/lulu-ext/transport/http v0.0.0-20260626101359-877a46103c1d h1:LVDirab4Mi1r8C5nWucXIqVnqtf5O+t2hYhCSAko4+c=
+github.com/kalandramo/lulu-ext/transport/http v0.0.0-20260626101359-877a46103c1d/go.mod h1:wbBkGh/3WKO3wV8Y7uNyTnSBk7SFv9CYBbjkUC9Xu1Q=
