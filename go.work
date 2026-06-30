@@ -27,6 +27,7 @@ use (
 	./config/http
 	./config/kubernetes
 	./config/nacos
+	./config/oss
 	./config/redis
 	./encoding
 	./encoding/json
