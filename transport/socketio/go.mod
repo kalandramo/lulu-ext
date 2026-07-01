@@ -7,7 +7,7 @@ require (
 	github.com/gorilla/handlers v1.5.2
 	github.com/gorilla/mux v1.8.1
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626085812-ee3d9c7661fa
+	github.com/kalandramo/lulu-ext v0.1.5
 )
 
 require (

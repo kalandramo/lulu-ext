@@ -6,7 +6,7 @@ require (
 	github.com/aws/aws-sdk-go-v2 v1.42.0
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.104.1
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/config v0.0.0-20260630095030-5696808f23c6
+	github.com/kalandramo/lulu-ext v0.1.5
 )
 
 require (

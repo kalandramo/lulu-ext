@@ -2,7 +2,7 @@ module github.com/kalandramo/lulu-ext/transport
 
 go 1.26.1
 
-require github.com/kalandramo/lulu-ext/broker v0.0.0-20260626085812-ee3d9c7661fa
+require github.com/kalandramo/lulu-ext v0.1.5
 
 require (
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
@@ -11,7 +11,7 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0 // indirect
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626042247-1127e2133169 // indirect
+	github.com/kalandramo/lulu-ext v0.1.5 // indirect
 	github.com/kalandramo/lulu-ext/encoding/json v0.0.0-20260626042247-1127e2133169 // indirect
 	github.com/kalandramo/lulu-ext/encoding/proto v0.0.0-20260626042247-1127e2133169 // indirect
 	github.com/kalandramo/lulu-ext/tracer/otlp v0.0.0-20260626042247-1127e2133169 // indirect

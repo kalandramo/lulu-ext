@@ -3,7 +3,7 @@ module github.com/kalandramo/lulu-ext/cache/redis
 go 1.26.1
 
 require (
-	github.com/kalandramo/lulu-ext/cache v0.0.0-20260626042247-1127e2133169
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/redis/go-redis/v9 v9.21.0
 )
 

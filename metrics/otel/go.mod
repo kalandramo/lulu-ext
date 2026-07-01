@@ -3,7 +3,7 @@ module github.com/kalandramo/lulu-ext/metrics/otel
 go 1.26.1
 
 require (
-	github.com/kalandramo/lulu-ext/metrics v0.0.0-20260626042247-1127e2133169
+	github.com/kalandramo/lulu-ext v0.1.5
 	go.opentelemetry.io/otel v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.44.0

@@ -4,9 +4,9 @@ go 1.26.1
 
 require (
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/broker v0.0.0-20260626085812-ee3d9c7661fa
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626085812-ee3d9c7661fa
-	github.com/kalandramo/lulu-ext/metrics v0.0.0-20260626085812-ee3d9c7661fa
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/pion/webrtc/v4 v4.2.15
 	github.com/tx7do/go-utils/id v0.0.6
 )

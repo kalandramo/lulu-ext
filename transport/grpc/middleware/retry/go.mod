@@ -3,7 +3,7 @@ module github.com/kalandramo/lulu-ext/transport/grpc/middleware/retry
 go 1.26.1
 
 require (
-	github.com/kalandramo/lulu-ext/retry v0.0.0-20260626095545-e1c604db8af0
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/grpc v1.81.1
 )

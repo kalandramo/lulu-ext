@@ -5,8 +5,8 @@ go 1.26.1
 require (
 	github.com/google/uuid v1.6.0
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/broker v0.0.0-20260626042247-1127e2133169
-	github.com/kalandramo/lulu-ext/testing v0.0.0-20260626042247-1127e2133169
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/kalandramo/lulu-ext/tracer/otlp v0.0.0-20260626042247-1127e2133169
 	github.com/rabbitmq/amqp091-go v1.12.0
 	github.com/stretchr/testify v1.11.1
@@ -21,7 +21,7 @@ require (
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0 // indirect
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626042247-1127e2133169 // indirect
+	github.com/kalandramo/lulu-ext v0.1.5 // indirect
 	github.com/kalandramo/lulu-ext/encoding/json v0.0.0-20260626042247-1127e2133169 // indirect
 	github.com/kalandramo/lulu-ext/encoding/proto v0.0.0-20260626042247-1127e2133169 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect

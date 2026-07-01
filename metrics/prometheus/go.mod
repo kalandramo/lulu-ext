@@ -3,7 +3,7 @@ module github.com/kalandramo/lulu-ext/metrics/prometheus
 go 1.26.1
 
 require (
-	github.com/kalandramo/lulu-ext/metrics v0.0.0-20260626042247-1127e2133169
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/prometheus/client_golang v1.23.2
 )
 

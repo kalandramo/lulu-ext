@@ -8,8 +8,8 @@ require (
 	github.com/apache/rocketmq-clients/golang/v5 v5.1.4
 	github.com/gogap/errors v0.0.0-20210818113853-edfbba0ddea9
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/broker v0.0.0-20260626042247-1127e2133169
-	github.com/kalandramo/lulu-ext/testing v0.0.0-20260626042247-1127e2133169
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/kalandramo/lulu-ext/tracer/otlp v0.0.0-20260626042247-1127e2133169
 	github.com/stretchr/testify v1.11.1
 	go.opentelemetry.io/otel v1.44.0
@@ -39,7 +39,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626042247-1127e2133169 // indirect
+	github.com/kalandramo/lulu-ext v0.1.5 // indirect
 	github.com/kalandramo/lulu-ext/encoding/json v0.0.0-20260626042247-1127e2133169 // indirect
 	github.com/kalandramo/lulu-ext/encoding/proto v0.0.0-20260626042247-1127e2133169 // indirect
 	github.com/klauspost/compress v1.18.6 // indirect

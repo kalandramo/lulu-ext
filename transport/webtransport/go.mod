@@ -4,10 +4,10 @@ go 1.26.1
 
 require (
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/broker v0.0.0-20260626101359-877a46103c1d
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260626101359-877a46103c1d
-	github.com/kalandramo/lulu-ext/metrics v0.0.0-20260626101359-877a46103c1d
-	github.com/kalandramo/lulu-ext/testing v0.0.0-20260626101359-877a46103c1d
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/quic-go/quic-go v0.60.0
 )
 

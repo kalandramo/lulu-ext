@@ -4,7 +4,7 @@ go 1.26.1
 
 require (
 	github.com/alibaba/sentinel-golang v1.0.4
-	github.com/kalandramo/lulu-ext/circuitbreaker v0.0.0-20260626042247-1127e2133169
+	github.com/kalandramo/lulu-ext v0.1.5
 )
 
 require (

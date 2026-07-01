@@ -33,8 +33,8 @@ require (
 	github.com/goccy/go-yaml v1.19.2 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62 // indirect
-	github.com/kalandramo/lulu-ext/encoding v0.0.0-20260701040602-1dc1839b5f73 // indirect
-	github.com/kalandramo/lulu-ext/ratelimit v0.0.0-20260701040602-1dc1839b5f73 // indirect
+	github.com/kalandramo/lulu-ext v0.1.5 // indirect
+	github.com/kalandramo/lulu-ext v0.1.5 // indirect
 	github.com/klauspost/cpuid/v2 v2.4.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect

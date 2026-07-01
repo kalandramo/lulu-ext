@@ -4,7 +4,7 @@ go 1.26.1
 
 require (
 	github.com/kalandramo/lulu v0.0.0-20260617094710-09209c191f62
-	github.com/kalandramo/lulu-ext/log v0.0.0-20260618073523-9adfc10f70aa
+	github.com/kalandramo/lulu-ext v0.1.5
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/grpc v1.81.1
 )
