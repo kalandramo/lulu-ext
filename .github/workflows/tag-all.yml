@@ -1,0 +1,103 @@
+name: Tag All Modules
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号 (如：v1.0.0)，留空则自动计算'
+        required: false
+        type: string
+      bump_type:
+        description: '自动版本递增类型 (version 留空时生效)'
+        required: false
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: 'patch'
+      dry_run:
+        description: '干运行（不实际创建 tag）'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  tag-all:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 需要写权限来创建和推送 tag
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 设置脚本执行权限
+        run: |
+          chmod +x ./scripts/tag-all.sh
+          chmod +x ./scripts/bump-version.sh
+
+      - name: 计算版本号
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            echo "📦 使用指定版本号：$VERSION"
+          else
+            BUMP_TYPE="${{ github.event.inputs.bump_type }}"
+            VERSION=$(./scripts/bump-version.sh "$BUMP_TYPE")
+            echo "📦 自动计算版本号：$VERSION (bump: $BUMP_TYPE)"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: 验证版本号格式
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          if ! echo "$VERSION" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "❌ 错误：版本号格式应为 v1.0.0"
+            exit 1
+          fi
+          echo "✅ 版本号格式正确：$VERSION"
+
+      - name: 检查 tag 是否已存在
+        id: check-tag
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          if git tag -l "$VERSION" | grep -q "^$VERSION$"; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "⚠️  tag $VERSION 已存在"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "✅ tag $VERSION 不存在，可以继续"
+          fi
+
+      - name: 创建 tag
+        if: steps.check-tag.outputs.exists == 'false' && github.event.inputs.dry_run != 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git tag "$VERSION"
+          echo "✅ tag $VERSION 创建成功"
+
+      - name: 推送 tag
+        if: steps.check-tag.outputs.exists == 'false' && github.event.inputs.dry_run != 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          git push origin "$VERSION"
+          echo "✅ tag $VERSION 已推送到远程"
+
+      - name: 输出结果
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          echo ""
+          echo "🎉 Tag 完成!"
+          echo "   版本：$VERSION"
+          echo "   Commit: $(git rev-parse --short HEAD)"
+          echo ""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "⚠️  干运行模式 - 未实际创建 tag"
+          fi
