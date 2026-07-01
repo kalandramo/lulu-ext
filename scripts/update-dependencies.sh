@@ -15,7 +15,7 @@ fi
 echo "🔄 更新所有子模块依赖版本为：$VERSION"
 
 # 根模块路径
-ROOT_MODULE="github.com/kalandramo/lulu-bootstrap"
+ROOT_MODULE="github.com/kalandramo/lulu-ext"
 
 # 统计更新的文件数
 UPDATED=0
