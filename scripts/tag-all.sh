@@ -1,16 +1,31 @@
 #!/bin/bash
 # 统一版本自动打 tag 脚本
-# 用法：./scripts/tag-all.sh v1.0.0 [--dry-run]
+# 用法：./scripts/tag-all.sh v1.0.0 [--dry-run] [--update-deps]
 
 set -e
 
 VERSION=$1
 DRY_RUN=false
+UPDATE_DEPS=false
 
 # 解析参数
-if [ "$2" = "--dry-run" ]; then
-    DRY_RUN=true
+for arg in "$@"; do
+    case $arg in
+        --dry-run)
+            DRY_RUN=true
+            ;;
+        --update-deps)
+            UPDATE_DEPS=true
+            ;;
+    esac
+done
+
+if [ "$DRY_RUN" = true ]; then
     echo "🔍 干运行模式 - 不会实际创建或推送 tag"
+fi
+
+if [ "$UPDATE_DEPS" = true ]; then
+    echo "🔄 将自动更新子模块依赖版本"
 fi
 
 # 如果未提供版本号，尝试从 bump-version.sh 自动计算
@@ -80,6 +95,20 @@ echo "✅ tag $VERSION 创建成功"
 echo "📤 推送 tag 到远程..."
 git push origin "$VERSION"
 echo "✅ tag $VERSION 已推送"
+
+# 更新子模块依赖（如果指定了 --update-deps）
+if [ "$UPDATE_DEPS" = true ] && [ "$DRY_RUN" = false ]; then
+    echo ""
+    echo "🔄 更新子模块依赖版本..."
+    ./scripts/update-dependencies.sh "$VERSION"
+
+    echo ""
+    echo "📝 提交依赖更新..."
+    git add .
+    git commit -m "chore: 更新子模块依赖版本为 $VERSION"
+    git push
+    echo "✅ 依赖更新已提交并推送"
+fi
 
 echo ""
 echo "🎉 完成！"

@@ -90,6 +90,22 @@ jobs:
           git push origin "$VERSION"
           echo "✅ tag $VERSION 已推送到远程"
 
+      - name: 更新子模块依赖
+        if: steps.check-tag.outputs.exists == 'false' && github.event.inputs.dry_run != 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          ./scripts/update-dependencies.sh "$VERSION"
+
+      - name: 提交依赖更新
+        if: steps.check-tag.outputs.exists == 'false' && github.event.inputs.dry_run != 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "chore: 更新子模块依赖版本为 ${{ steps.version.outputs.version }}"
+          git push
+          echo "✅ 依赖更新已提交并推送"
+
       - name: 输出结果
         run: |
           VERSION="${{ steps.version.outputs.version }}"

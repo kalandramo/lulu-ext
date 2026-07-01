@@ -29,10 +29,13 @@ v<主版本>.<次版本>.<修订号>
 # 1. 干运行（预览）
 ./scripts/tag-all.sh v1.0.0 --dry-run
 
-# 2. 正式打 tag
-./scripts/tag-all.sh v1.0.0
+# 2. 正式打 tag（自动更新子模块依赖）
+./scripts/tag-all.sh v1.0.0 --update-deps
 
-# 3. 自动计算下一个版本
+# 3. 自动计算下一个版本并打 tag
+./scripts/tag-all.sh --update-deps  # 自动 bump patch 版本
+
+# 4. 手动计算版本号
 ./scripts/bump-version.sh patch  # 输出：v1.0.1
 ./scripts/bump-version.sh minor  # 输出：v1.1.0
 ./scripts/bump-version.sh major  # 输出：v2.0.0
@@ -44,6 +47,11 @@ v<主版本>.<次版本>.<修订号>
 2. 选择 "Tag All Modules" workflow
 3. 点击 "Run workflow"
 4. 输入版本号或选择递增类型
+5. workflow 会自动：
+   - 创建 tag
+   - 推送 tag 到远程
+   - 更新所有子模块间的依赖版本
+   - 提交并推送依赖更新
 
 ## 验证 Tag
 
